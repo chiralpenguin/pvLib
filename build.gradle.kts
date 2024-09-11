@@ -57,7 +57,9 @@ val localMavenRepoPath: String by project
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
-            from(components["java"]) // Publishing Java or Kotlin library
+            artifact(tasks.shadowJar.get()) {
+                classifier = "" // Ensure this is different or empty if not using a classifier
+            }
         }
     }
     repositories {

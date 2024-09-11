@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 
 public class ConfigFile {
     private final String filename;
-    private CommentedConfigurationNode rootNode;
+    protected CommentedConfigurationNode configRoot;
 
     public ConfigFile(String filename) {
         this.filename = filename;
@@ -30,16 +30,12 @@ public class ConfigFile {
         }
 
         YamlConfigurationLoader configLoader = YamlConfigurationLoader.builder().path(Path.of(filename)).build();
-        CommentedConfigurationNode rootNode = null;
+        CommentedConfigurationNode configRoot = null;
 
         try {
-            rootNode = configLoader.load();
+            configRoot = configLoader.load();
         } catch (ConfigurateException e) {
             e.printStackTrace();
         }
-    }
-
-    public CommentedConfigurationNode getRootNode() {
-        return rootNode;
     }
 }

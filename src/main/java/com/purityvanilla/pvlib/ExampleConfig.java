@@ -10,18 +10,16 @@ public class ExampleConfig extends ConfigFile {
     private HashMap<String, String> exampleMap;
 
     public ExampleConfig(String filename) {
+        // Create config file and save default config (located at resources/config.yml)
         super(filename);
-        CommentedConfigurationNode root = super.getRootNode();
 
         // Example boolean and Map<String, String> config values
-        exampleOption = root.node("example").getBoolean();
-
+        exampleOption = configRoot.node("example").getBoolean();
         exampleMap = new HashMap<>();
-        Map<Object, CommentedConfigurationNode> entries = root.node("exampleMap").childrenMap();
+        Map<Object, CommentedConfigurationNode> entries = configRoot.node("exampleMap").childrenMap();
         for (Map.Entry<Object, CommentedConfigurationNode> entry : entries.entrySet()) {
             exampleMap.put(entry.getKey().toString(), entry.getValue().getString());
         }
-
     }
 
     // Example getter methods for config values
