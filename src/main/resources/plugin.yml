@@ -1,0 +1,7 @@
+name: pvLib
+main: com.purityvanilla.pvlib.pvLib
+version: 1.0
+api-version: 1.21
+authors: [chiralpenguin]
+description: Library for Purity Vanilla plugins
+folia-supported: true
