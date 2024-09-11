@@ -48,9 +48,11 @@ tasks {
         into(file(testServerPluginsPath)) // Use the externalized path here
     }
 
+    /* Step to run copyToServer after build
     build {
         finalizedBy(copyToServer)
     }
+     */
 }
 
 val localMavenRepoPath: String by project

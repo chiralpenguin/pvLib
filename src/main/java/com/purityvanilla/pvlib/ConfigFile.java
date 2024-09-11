@@ -30,7 +30,7 @@ public class ConfigFile {
         }
 
         YamlConfigurationLoader configLoader = YamlConfigurationLoader.builder().path(Path.of(filename)).build();
-        CommentedConfigurationNode configRoot = null;
+        configRoot = null;
 
         try {
             configRoot = configLoader.load();
