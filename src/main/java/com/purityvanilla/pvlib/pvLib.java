@@ -6,7 +6,7 @@ public class pvLib extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("pvLib enabled.");
+        getLogger().info("Library loaded");
     }
 
 }

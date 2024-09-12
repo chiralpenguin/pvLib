@@ -1,0 +1,8 @@
+{
+  "exampleMessage": "<blue>This is an example MiniMessage formatted string!",
+  "exampleRules": [
+    "<red>1. No hacks",
+    "<red>2. No exploits",
+    "<red>3. No lag machines"
+  ]
+}

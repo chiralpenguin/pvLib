@@ -1,4 +1,4 @@
-package com.purityvanilla.pvlib;
+package com.purityvanilla.pvlib.config;
 
 import org.spongepowered.configurate.CommentedConfigurationNode;
 
@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ExampleConfig extends ConfigFile {
-    private Boolean exampleOption;
-    private HashMap<String, String> exampleMap;
+    private final Boolean exampleOption;
+    private final HashMap<String, String> exampleMap;
 
-    public ExampleConfig(String filename) {
+    public ExampleConfig(String filepath) {
         // Create config file and save default config (located at resources/config.yml)
-        super(filename);
+        super(filepath);
 
         // Example boolean and Map<String, String> config values
         exampleOption = configRoot.node("example").getBoolean();
@@ -30,5 +30,4 @@ public class ExampleConfig extends ConfigFile {
     public String exampleValue() {
         return exampleMap.get("example");
     }
-
 }

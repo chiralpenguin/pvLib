@@ -1,4 +1,4 @@
-package com.purityvanilla.pvlib;
+package com.purityvanilla.pvlib.util;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -9,14 +9,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class DataFile {
-
-    private String dataFilePath;
+    private String filepath;
     private File dataFile;
     private Type mapType;
 
-    public DataFile(String path, Type mapType) {
-        this.dataFilePath = path;
-        this.dataFile = new File(dataFilePath);
+    public DataFile(String filepath, Type mapType) {
+        this.filepath = filepath;
+        this.dataFile = new File(filepath);
         this.mapType = mapType;
 
         dataFile.getParentFile().mkdirs();
@@ -59,5 +58,4 @@ public class DataFile {
         }
         return new HashMap<T, U>();
     }
-
 }

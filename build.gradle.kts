@@ -27,6 +27,7 @@ tasks.jar {
 }
 
 tasks.shadowJar {
+    dependsOn(tasks.build)
     archiveClassifier.set("") // This removes the default "-all" classifier
     archiveFileName.set("pvLib.jar")
 
@@ -35,14 +36,10 @@ tasks.shadowJar {
     }
 }
 
-tasks.build {
-    dependsOn(tasks.shadowJar)
-}
-
 val testServerPluginsPath: String by project
 tasks {
     val copyToServer by creating(Copy::class) {
-        dependsOn("build")
+        dependsOn("shadowJar")
         from(layout.buildDirectory.file("libs"))
         include("pvLib.jar")
         into(file(testServerPluginsPath)) // Use the externalized path here

@@ -1,4 +1,4 @@
-package com.purityvanilla.pvlib;
+package com.purityvanilla.pvlib.config;
 
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
@@ -12,12 +12,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class ConfigFile {
-    private final String filename;
+    private final String filepath;
     protected CommentedConfigurationNode configRoot;
 
-    public ConfigFile(String filename) {
-        this.filename = filename;
-        File file = new File(filename);
+    public ConfigFile(String filepath) {
+        this.filepath = filepath;
+        File file = new File(filepath);
         file.getParentFile().mkdirs();
 
         if (!file.exists()) {
@@ -29,9 +29,7 @@ public class ConfigFile {
             }
         }
 
-        YamlConfigurationLoader configLoader = YamlConfigurationLoader.builder().path(Path.of(filename)).build();
-        configRoot = null;
-
+        YamlConfigurationLoader configLoader = YamlConfigurationLoader.builder().path(Path.of(filepath)).build();
         try {
             configRoot = configLoader.load();
         } catch (ConfigurateException e) {
