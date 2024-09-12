@@ -16,14 +16,14 @@ public class Messages {
     private final String filepath;
     protected HashMap<String, Object> messageMap;
     
-    public Messages(String filepath) {
+    public Messages(ConfigFile config, String filepath) {
         this.filepath = filepath;
         File file = new File(filepath);
         file.getParentFile().mkdirs();
 
         if (!file.exists()) {
             try {
-                InputStream defaultStream = getClass().getResourceAsStream("/messages.json");
+                InputStream defaultStream = config.getClass().getResourceAsStream("/messages.json");
                 Files.copy(defaultStream, Paths.get(file.toURI()));
             } catch (IOException e) {
                 e.printStackTrace();

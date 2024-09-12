@@ -9,9 +9,9 @@ public class ExampleConfig extends ConfigFile {
     private final Boolean exampleOption;
     private final HashMap<String, String> exampleMap;
 
-    public ExampleConfig(String filepath) {
+    public ExampleConfig() {
         // Create config file and save default config (located at resources/config.yml)
-        super(filepath);
+        super("plugins/pvLib/example-config.yml");
 
         // Example boolean and Map<String, String> config values
         exampleOption = configRoot.node("example").getBoolean();
@@ -20,6 +20,9 @@ public class ExampleConfig extends ConfigFile {
         for (Map.Entry<Object, CommentedConfigurationNode> entry : entries.entrySet()) {
             exampleMap.put(entry.getKey().toString(), entry.getValue().getString());
         }
+
+        // Optional line to initialise messages.json
+        messages = new Messages(this, "plugins/pvLib/messages.json");
     }
 
     // Example getter methods for config values
