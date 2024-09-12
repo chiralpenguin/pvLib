@@ -1,5 +1,7 @@
 package com.purityvanilla.pvlib.config;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
@@ -14,6 +16,7 @@ import java.nio.file.Paths;
 public class ConfigFile {
     private final String filepath;
     protected CommentedConfigurationNode configRoot;
+    protected Messages messages;
 
     public ConfigFile(String filepath) {
         this.filepath = filepath;
@@ -35,5 +38,13 @@ public class ConfigFile {
         } catch (ConfigurateException e) {
             e.printStackTrace();
         }
+    }
+
+    public Component getMessage(String key) {
+        if (messages == null) {
+            return Component.text("Messages have not been initialised in the config!").color(NamedTextColor.RED);
+        }
+
+        return messages.getMessage(key);
     }
 }
