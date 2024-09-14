@@ -41,6 +41,10 @@ public class Messages {
         messageMap = gson.fromJson(reader, new TypeToken<HashMap<String, Object>>(){}.getType());
     }
 
+    public String getRawMessage(String messageKey) {
+        return (String) messageMap.get(messageKey);
+    }
+
     public Component getMessage(String messageKey) {
         Object value = messageMap.get(messageKey);
         // If JSON at that value is list, each element is sent as a line of a single message
@@ -57,7 +61,7 @@ public class Messages {
         }
 
         // Otherwise, deserialise element as single String and return
-        String rawMessage = (String) messageMap.get(messageKey);
+        String rawMessage = getRawMessage(messageKey);
         Component message = MiniMessage.miniMessage().deserialize(rawMessage);
         return message;
     }

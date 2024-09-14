@@ -40,6 +40,10 @@ public class ConfigFile {
         }
     }
 
+    public String getRawMessage(String key) {
+        return messages.getRawMessage(key);
+    }
+
     public Component getMessage(String key) {
         if (messages == null) {
             return Component.text("Messages have not been initialised in the config!").color(NamedTextColor.RED);
