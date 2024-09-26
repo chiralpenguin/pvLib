@@ -2,6 +2,7 @@ package com.purityvanilla.pvlib.config;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
@@ -44,11 +45,15 @@ public class ConfigFile {
         return messages.getRawMessage(key);
     }
 
-    public Component getMessage(String key) {
+    public Component getMessage(String key, TagResolver resolver) {
         if (messages == null) {
             return Component.text("Messages have not been initialised in the config!").color(NamedTextColor.RED);
         }
 
-        return messages.getMessage(key);
+        return messages.getMessage(key, resolver);
+    }
+
+    public Component getMessage(String key) {
+        return getMessage(key, TagResolver.standard());
     }
 }

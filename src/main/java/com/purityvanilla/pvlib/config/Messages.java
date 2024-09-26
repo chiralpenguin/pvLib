@@ -5,6 +5,7 @@ import io.leangen.geantyref.TypeToken;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -45,14 +46,14 @@ public class Messages {
         return (String) messageMap.get(messageKey);
     }
 
-    public Component getMessage(String messageKey) {
+    public Component getMessage(String messageKey, TagResolver resolver) {
         Object value = messageMap.get(messageKey);
         // If JSON at that value is list, each element is sent as a line of a single message
         if (value instanceof ArrayList) {
             ArrayList<String> messageList = (ArrayList<String>) value;
             TextComponent.Builder message = Component.text();
             for (int i = 0; i < messageList.size(); i++) {
-                message.append(MiniMessage.miniMessage().deserialize(messageList.get(i)));
+                message.append(MiniMessage.miniMessage().deserialize(messageList.get(i), resolver));
                 if (i < messageList.size() - 1) { // Append newline if not final line in message
                     message.appendNewline();
                 }
@@ -62,7 +63,6 @@ public class Messages {
 
         // Otherwise, deserialise element as single String and return
         String rawMessage = getRawMessage(messageKey);
-        Component message = MiniMessage.miniMessage().deserialize(rawMessage);
-        return message;
+        return MiniMessage.miniMessage().deserialize(rawMessage, resolver);
     }
 }
