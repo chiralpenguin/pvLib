@@ -1,5 +1,5 @@
 name: pvLib
-main: com.purityvanilla.pvlib.pvLib
+main: com.purityvanilla.pvlib.PVLib
 version: 1.0
 api-version: 1.21
 authors: [chiralpenguin]
