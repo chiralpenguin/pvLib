@@ -38,12 +38,12 @@ tasks.shadowJar {
 
 val testServerPluginsPath: String by project
 tasks {
-    val copyToServer by creating(Copy::class) {
+    val copyToServer by registering(Copy::class, fun Copy.() {
         dependsOn("shadowJar")
         from(layout.buildDirectory.file("libs"))
         include("pvLib.jar")
         into(file(testServerPluginsPath)) // Use the externalized path here
-    }
+    })
 
     /* Step to run copyToServer after build
     build {
