@@ -1,6 +1,8 @@
 package com.purityvanilla.pvlib.util;
 
+import java.sql.Timestamp;
 import java.time.Duration;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,10 @@ public class TimeFormatting {
         }
 
         return result.toString();
+    }
+
+    public static String basicDateString(Timestamp timestamp) {
+        return timestamp.toLocalDateTime().format((DateTimeFormatter.ofPattern("d MMMM yyyy")));
     }
 
     private static List<String> getDurationStrings(Duration duration) {
