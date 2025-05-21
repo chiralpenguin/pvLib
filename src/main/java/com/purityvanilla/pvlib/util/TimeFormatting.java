@@ -31,6 +31,10 @@ public class TimeFormatting {
         return timestamp.toLocalDateTime().format((DateTimeFormatter.ofPattern("d MMMM yyyy")));
     }
 
+    public static String basicDateTimeString(Timestamp timestamp) {
+        return timestamp.toLocalDateTime().format(DateTimeFormatter.ofPattern("H:mm:ss d/M/y"));
+    }
+
     private static List<String> getDurationStrings(Duration duration) {
         List<String> parts = new ArrayList<>();
 
