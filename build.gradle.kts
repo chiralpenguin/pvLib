@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper", "paper-api", "1.21.1-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper", "paper-api", "1.21.7-R0.1-SNAPSHOT")
     implementation("org.spongepowered", "configurate-yaml", "4.0.0")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
