@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("com.gradleup.shadow") version "9.2.2"
     id("maven-publish")
 }
 
@@ -15,6 +15,8 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper", "paper-api", "1.21.7-R0.1-SNAPSHOT")
     implementation("org.spongepowered", "configurate-yaml", "4.0.0")
+    implementation("org.mariadb.jdbc", "mariadb-java-client", "3.4.1")
+    implementation("com.zaxxer", "HikariCP", "5.1.0")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
@@ -27,7 +29,6 @@ tasks.jar {
 }
 
 tasks.shadowJar {
-    dependsOn(tasks.build)
     archiveClassifier.set("") // This removes the default "-all" classifier
     archiveFileName.set("pvLib.jar")
 
