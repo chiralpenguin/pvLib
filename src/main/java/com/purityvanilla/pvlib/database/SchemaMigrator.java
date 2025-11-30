@@ -22,7 +22,7 @@ public class SchemaMigrator {
         migrations = new ArrayList<>();
     }
 
-    private void registerMigration(Migration migration) {
+    public void registerMigration(Migration migration) {
         migrations.add(migration);
     }
 
