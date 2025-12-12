@@ -76,7 +76,7 @@ public class FormatCodeParser {
         }
 
         // Handle magic (obfuscated) format code as special case not covered by catch-all ("*" will cover magic)
-        if (code.equals("k")) {
+        if (code.equals("k") || code.equals("K")) {
             return player.hasPermission(CORE_PERMISSION_BASE + "magic") ||
                     player.hasPermission(context.getPermissionBase() + "magic");
         }
