@@ -17,7 +17,7 @@ public class FormatCodeParser {
     public static final String HEX_PERMISSION = "hex";
 
     private static final Pattern LEGACY_PATTERN = Pattern.compile(
-            "&([0-9a-fk-or]|#[0-9A-Fa-f]{6}|x&[0-9A-Fa-f]&[0-9A-Fa-f]&[0-9A-Fa-f]&[0-9A-Fa-f]&[0-9A-Fa-f]&[0-9A-Fa-f])"
+            "&([0-9a-fA-Fk-orK-OR]|#[0-9A-Fa-f]{6}|x&[0-9A-Fa-f]&[0-9A-Fa-f]&[0-9A-Fa-f]&[0-9A-Fa-f]&[0-9A-Fa-f]&[0-9A-Fa-f])"
     );
 
     private static final String CORE_PERMISSION_BASE = "pvcore.formatcodes.";
@@ -74,9 +74,10 @@ public class FormatCodeParser {
         if (code == null || code.isEmpty()) {
             return false;
         }
+        code = code.toLowerCase();
 
         // Handle magic (obfuscated) format code as special case not covered by catch-all ("*" will cover magic)
-        if (code.equals("k") || code.equals("K")) {
+        if (code.equals("k")) {
             return player.hasPermission(CORE_PERMISSION_BASE + "magic") ||
                     player.hasPermission(context.getPermissionBase() + "magic");
         }
