@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper", "paper-api", "1.21.7-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper", "paper-api", "1.21.11-R0.1-SNAPSHOT")
     implementation("org.spongepowered", "configurate-yaml", "4.0.0")
     implementation("org.mariadb.jdbc", "mariadb-java-client", "3.4.1")
     implementation("com.zaxxer", "HikariCP", "5.1.0")
